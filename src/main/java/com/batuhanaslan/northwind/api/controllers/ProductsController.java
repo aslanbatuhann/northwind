@@ -2,11 +2,11 @@ package com.batuhanaslan.northwind.api.controllers;
 
 import com.batuhanaslan.northwind.business.abstracts.ProductService;
 import com.batuhanaslan.northwind.core.utilities.results.DataResult;
+import com.batuhanaslan.northwind.core.utilities.results.Result;
 import com.batuhanaslan.northwind.entities.concretes.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -26,4 +26,9 @@ public class ProductsController {
         return this.productService.getAll();
     }
 
+    @PostMapping("/add")
+    public Result add(@RequestBody Product product) {
+        return this.productService.add(product);
+
+    }
 }
