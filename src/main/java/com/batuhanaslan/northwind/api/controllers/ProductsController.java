@@ -18,6 +18,7 @@ public class ProductsController {
 
     @Autowired
     public ProductsController(ProductService productService) {
+        super();
         this.productService = productService;
     }
 
@@ -34,5 +35,30 @@ public class ProductsController {
     @GetMapping("/getByProductName")
     public DataResult<Product> getByProductName(@RequestParam String productName) {
         return this.productService.getByProductName(productName);
+    }
+
+    @GetMapping("/getByProductNameAndCategory_CategoryId")
+    public DataResult<Product> getByProductNameAndCategory_CategoryId(@RequestParam String productName, @RequestParam int categoryId) {
+        return this.productService.getByProductNameAndCategory_CategoryId(productName, categoryId);
+    }
+
+    @GetMapping("/getByProductNameOrCategory_CategoryId")
+    public DataResult<List<Product>> getByProductNameOrCategory_CategoryId(@RequestParam String productName, @RequestParam int categoryId) {
+        return this.productService.getByProductNameOrCategory_CategoryId(productName, categoryId);
+    }
+
+    @GetMapping("/getByProductNameContains")
+    public DataResult<List<Product>> getByProductNameContains(@RequestParam String productName) {
+        return this.productService.getByProductNameContains(productName);
+    }
+
+    @GetMapping("/getByProductNameStartsWith")
+    public DataResult<List<Product>> getByProductNameStartsWith(@RequestParam String productName) {
+        return this.productService.getByProductNameStartsWith(productName);
+    }
+
+    @GetMapping("/getByNameAndCategory")
+    public DataResult<List<Product>> getByNameAndCategory(@RequestParam String productName,@RequestParam int categoryId) {
+        return this.productService.getByNameAndCategory(productName,categoryId);
     }
 }
