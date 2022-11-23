@@ -58,7 +58,17 @@ public class ProductsController {
     }
 
     @GetMapping("/getByNameAndCategory")
-    public DataResult<List<Product>> getByNameAndCategory(@RequestParam String productName,@RequestParam int categoryId) {
-        return this.productService.getByNameAndCategory(productName,categoryId);
+    public DataResult<List<Product>> getByNameAndCategory(@RequestParam String productName, @RequestParam int categoryId) {
+        return this.productService.getByNameAndCategory(productName, categoryId);
+    }
+
+    @GetMapping("/getAllByPage")
+    public DataResult<List<Product>> getAll(int pageNo, int pageSize) {
+        return this.productService.getAll(pageNo, pageSize);
+    }
+
+    @GetMapping("/getAllSorted")
+    public DataResult<List<Product>> getAllSorted() {
+        return this.productService.getAllSorted();
     }
 }
