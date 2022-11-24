@@ -4,6 +4,7 @@ import com.batuhanaslan.northwind.business.abstracts.ProductService;
 import com.batuhanaslan.northwind.core.utilities.results.DataResult;
 import com.batuhanaslan.northwind.core.utilities.results.Result;
 import com.batuhanaslan.northwind.entities.concretes.Product;
+import com.batuhanaslan.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -70,5 +71,10 @@ public class ProductsController {
     @GetMapping("/getAllSorted")
     public DataResult<List<Product>> getAllSorted() {
         return this.productService.getAllSorted();
+    }
+
+    @GetMapping("/getProductWithCategoryDetails")
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return this.productService.getProductWithCategoryDetails();
     }
 }

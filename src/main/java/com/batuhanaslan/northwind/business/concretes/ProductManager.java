@@ -7,6 +7,7 @@ import com.batuhanaslan.northwind.core.utilities.results.SuccessDataResult;
 import com.batuhanaslan.northwind.core.utilities.results.SuccessResult;
 import com.batuhanaslan.northwind.dataAccess.abstracts.ProductDao;
 import com.batuhanaslan.northwind.entities.concretes.Product;
+import com.batuhanaslan.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.PageRequest;
@@ -96,6 +97,12 @@ public class ProductManager implements ProductService {
     @Override
     public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
         return new SuccessDataResult<List<Product>>(this.productDao.getByNameAndCategory(productName, categoryId),
+                "Data Listelendi");
+    }
+
+    @Override
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return new SuccessDataResult<List<ProductWithCategoryDto>>(this.productDao.getProductWithCategoryDetails(),
                 "Data Listelendi");
     }
 }
